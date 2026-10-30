@@ -1,22 +1,29 @@
-import { MobileNav } from "@/components/layout/mobile-nav";
-import { AppBrand, Sidebar } from "@/components/layout/sidebar";
+import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex min-h-svh w-full">
-      <Sidebar />
-
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-40 flex h-14 items-center gap-2 border-b bg-background/80 px-3 backdrop-blur md:hidden">
-          <MobileNav />
-          <AppBrand />
-        </header>
-
-        <main className="flex-1 px-4 py-6 sm:px-6 md:px-10 md:py-10">
-          <div className="mx-auto w-full max-w-4xl">{children}</div>
-        </main>
-      </div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <header className="border-b border-border px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-6">
+          <Link href="/" className="font-black text-lg tracking-tight">
+            MyPlanner
+          </Link>
+          <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
+            <Link href="/hari-ini" className="hover:text-foreground transition-colors">Hari Ini</Link>
+            <Link href="/tasks" className="hover:text-foreground transition-colors">Tugas</Link>
+            <Link href="/kalender" className="hover:text-foreground transition-colors">Kalender</Link>
+          </nav>
+        </div>
+        <ThemeToggle />
+      </header>
+      <main className="flex-1 p-6 md:p-10 max-w-6xl mx-auto w-full">
+        {children}
+      </main>
     </div>
   );
 }
-
