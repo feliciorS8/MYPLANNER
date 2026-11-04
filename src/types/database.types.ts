@@ -14,6 +14,7 @@ export type Database = {
           id: string;
           full_name: string;
           avatar_url: string | null;
+          role: "admin" | "member";
           created_at: string;
           updated_at: string;
         };
@@ -21,6 +22,7 @@ export type Database = {
           id?: string;
           full_name: string;
           avatar_url?: string | null;
+          role?: "admin" | "member";
           created_at?: string;
           updated_at?: string;
         };
@@ -28,6 +30,7 @@ export type Database = {
           id?: string;
           full_name?: string;
           avatar_url?: string | null;
+          role?: "admin" | "member";
           created_at?: string;
           updated_at?: string;
         };
@@ -130,4 +133,3 @@ export type Database = {
     };
   };
 };
-
