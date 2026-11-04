@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { LogOut } from "lucide-react";
+import { signOutAction } from "@/actions/auth";
+import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function AppLayout({
@@ -19,7 +22,15 @@ export default function AppLayout({
             <Link href="/kalender" className="hover:text-foreground transition-colors">Kalender</Link>
           </nav>
         </div>
-        <ThemeToggle />
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <form action={signOutAction}>
+            <Button type="submit" variant="outline" size="sm" className="gap-1.5">
+              <LogOut className="h-4 w-4" />
+              Keluar
+            </Button>
+          </form>
+        </div>
       </header>
       <main className="flex-1 p-6 md:p-10 max-w-6xl mx-auto w-full">
         {children}
